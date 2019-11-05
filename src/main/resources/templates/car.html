@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Show cars list</h2>
+<form th:action="@{/carsList}" method="post">
+    <p><input type="submit" value="Show"></p>
+</form>
+
+<h2>Show cars as per production date</h2>
+<form th:action="@{/carsListByProduction}" th:object="${productionYear}" method="post">
+    <p>From: <input type="text" th:field="*{from}"></p>
+    <p>To: <input type="text"th:field="*{to}"></p>
+    <p><input type="submit" value="Show"></p>
+</form>
+
+<h2>Add new car :</h2>
+<form th:action="@{/add-car}" th:object="${newCar}" method="post">
+    <p>Mark: <input type="text" th:field="*{mark}"></p>
+    <p>Model: <input type="text" th:field="*{model}"></p>
+    <p>Colour:  <input name="colour" th:field="*{color}">
+    <p>Production year:  <input name="production year" th:field="*{productionYear}">
+    <p><input type="submit" value="add new car"></p>
+</form>
+
+</body>
+</html>

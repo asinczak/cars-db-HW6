@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Cars List</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th> Id </th>
+        <th> Mark </th>
+        <th> Model </th>
+        <th> Color </th>
+        <th> Production year </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${cars.isEmpty()}">
+        <td colspan="2"> No Cars Available </td>
+    </tr>
+<tr th:each="car:${cars}">
+    <td><span th:text="${car.getId()}"> Id </span></td>
+    <td><span th:text="${car.getMark()}"> Mark </span></td>
+    <td><span th:text="${car.getModel()}"> Model </span></td>
+    <td><span th:text="${car.getColor()}"> Color </span></td>
+    <td><span th:text="${car.getProductionYear()}"> Production Year </span></td>
+</tr>
+    </tbody>
+</table>
+<strong><a href="/cars">Click here to go back</a></strong>
+</body>
+</html>

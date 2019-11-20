@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.akademiaspring.cars.dao.CarDao;
 import pl.akademiaspring.cars.model.Car;
-import pl.akademiaspring.cars.model.ProductionYear;
-import pl.akademiaspring.cars.service.CarService;
+import pl.akademiaspring.cars.model.ProductionYearRange;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,21 +18,19 @@ import java.util.List;
 public class CarApi {
 
     private CarDao carDao;
-    private CarService carService;
     private List<Car> carList;
 
     @Autowired
-    public CarApi(CarDao carDao, CarService carService) {
+    public CarApi(CarDao carDao) {
         this.carList = new ArrayList<>();
         this.carDao = carDao;
-        this.carService = carService;
     }
 
     @GetMapping("/cars")
     public String getCar(Model model){
         model.addAttribute("cars", carDao.getCars());
         model.addAttribute("newCar", new Car());
-        model.addAttribute("productionYear", new ProductionYear());
+        model.addAttribute("productionYearRange", new ProductionYearRange());
         return "car";
     }
 
@@ -47,13 +44,12 @@ public class CarApi {
 
     @PostMapping("/add-car")
     public String addCar(@ModelAttribute Car car) {
-        car.setId(carService.getIdForNewCar());
         carDao.addNewCar(car);
         return "redirect:/cars";
     }
 
     @PostMapping("/carsListByProduction")
-    public ModelAndView getCarsListByProduction(@ModelAttribute ProductionYear productionYear) {
+    public ModelAndView getCarsListByProduction(@ModelAttribute ProductionYearRange productionYear) {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("carList");
         mav.addObject("cars", carDao.getCarsFromRange(productionYear.getFrom(), productionYear.getTo()));

@@ -2,13 +2,13 @@ package pl.akademiaspring.cars.model;
 
 public class Car {
 
-  private long id;
+  private  long id;
   private String mark;
   private String model;
   private String color;
-  private long productionYear;
+  private int productionYear;
 
-  public Car(long id, String mark, String model, String color, long productionYear) {
+  public Car(long id, String mark, String model, String color, int productionYear) {
     this.id = id;
     this.mark = mark;
     this.model = model;
@@ -26,7 +26,6 @@ public class Car {
   public void setId(long id) {
     this.id = id;
   }
-
 
   public String getMark() {
     return mark;
@@ -55,11 +54,11 @@ public class Car {
   }
 
 
-  public long getProductionYear() {
+  public int getProductionYear() {
     return productionYear;
   }
 
-  public void setProductionYear(long productionYear) {
+  public void setProductionYear(int productionYear) {
     this.productionYear = productionYear;
   }
 

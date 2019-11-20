@@ -22,11 +22,4 @@ public class DbConfig {
         return new JdbcTemplate(dataSource);
     }
 
-//    @EventListener(ApplicationReadyEvent.class)
-//    public void init(){
-//        String url = "CREATE TABLE cars (id int, mark varchar(255), model varchar(255), color varchar(255)," +
-//                "production_year int, PRIMARY KEY (id))";
-//                getJdbcTemplate().update(url);
-//    }
-
 }

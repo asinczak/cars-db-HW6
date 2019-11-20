@@ -12,7 +12,7 @@
 </form>
 
 <h2>Show cars as per production date</h2>
-<form th:action="@{/carsListByProduction}" th:object="${productionYear}" method="post">
+<form th:action="@{/carsListByProduction}" th:object="${productionYearRange}" method="post">
     <p>From: <input type="text" th:field="*{from}"></p>
     <p>To: <input type="text"th:field="*{to}"></p>
     <p><input type="submit" value="Show"></p>
